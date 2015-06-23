@@ -8,8 +8,7 @@
 from pyretic.lib.corelib import *
 from pyretic.lib.std import *
 from pyretic.lib.query import packets
-#from pyretic.examples.pyretic_switch import ActLikeSwitch
-#from helpers import *
+from pyretic.modules.pyretic_switch import ActLikeSwitch
 import re
 import os
 
@@ -26,19 +25,26 @@ def main():
     config = parse_config(policy_file)
     
     # Get learning switch module
-    learningSwitch = mac_learner()
+    learningSwitch = ActLikeSwitch
     
     # Make Firewall policy
     fwPolicy = make_firewall_policy(config)
     
     # Return composed policy
-    return learningSwitch >> self.fwPolicy
+    return self.fwPolicy >> learningSwitch
 
 def make_firewall_policy(config):
     # TODO - This is where you need to write the functionality to create the
     # firewall. What is passed in is a list of rules that you must implement
     # using the Pyretic syntax that was used in Assignment 2. 
-    pass
+    rules = []
+    for entry in config:
+        # TODO - build the individual rules
+        pass
+    
+    allowed = ~(union(rules))
+
+    return allowed
 
 
 def parse_config(filename):
@@ -53,6 +59,9 @@ def parse_config(filename):
                 continue
 
             # Check that it's valid
+            if len(cleanline.split(',')) != 7:
+                raise TypeError("There are only %i parts to the line \"%s\"; there must be 7."
+                                % (len(cleanline.split(',')), line))
 
             (rulenum, srcmac, dstmac, srcip, dstip, 
              srcport, dstport) = cleanline.split(',')
