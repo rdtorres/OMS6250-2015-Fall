@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-"Assignment 5 - THis is the controller that implements a firewall loaded \
+"Assignment 5 - This is the controller that implements a firewall loaded \
     from a configuration file. Like Assignment 2, it is Pyretic based. \
     Scattered borrowing from Spring 2015 Assignment 7."
    
@@ -9,6 +9,7 @@ from pyretic.lib.corelib import *
 from pyretic.lib.std import *
 from pyretic.lib.query import packets
 from pyretic.modules.pyretic_switch import ActLikeSwitch
+from pyretic.modules.firewall-policy import make_firewall_policy
 import re
 import os
 
@@ -18,8 +19,9 @@ policy_file = "%s/pyretic/pyretic/modules/firewall-policies.cfg" % os.environ[ '
 def main():
     """ Initialization of the Firewall. This pulls its rules from the file
             defined above. You can change this file pointer, but be sure to 
-            change it back before submission! The run.sh file copies over both
-            this file and the configuration file to the correct location."""
+            change it back before submission! The run-firewall.sh file copies 
+            over both this file and the configuration file to the correct 
+            location."""
         
     # Parse the input file - make sure it's valid.
     config = parse_config(policy_file)
@@ -33,18 +35,7 @@ def main():
     # Return composed policy
     return self.fwPolicy >> learningSwitch
 
-def make_firewall_policy(config):
-    # TODO - This is where you need to write the functionality to create the
-    # firewall. What is passed in is a list of rules that you must implement
-    # using the Pyretic syntax that was used in Assignment 2. 
-    rules = []
-    for entry in config:
-        # TODO - build the individual rules
-        pass
-    
-    allowed = ~(union(rules))
 
-    return allowed
 
 
 def parse_config(filename):
