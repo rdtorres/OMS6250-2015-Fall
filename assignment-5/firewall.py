@@ -9,7 +9,7 @@ from pyretic.lib.corelib import *
 from pyretic.lib.std import *
 from pyretic.lib.query import packets
 from pyretic.modules.pyretic_switch import ActLikeSwitch
-from pyretic.modules.firewall-policy import make_firewall_policy
+from pyretic.modules.firewall_policy import make_firewall_policy
 import re
 import os
 

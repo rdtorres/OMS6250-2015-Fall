@@ -6,8 +6,9 @@ if [ -z $1 ]; then
 fi
 
 cp $1 ~/pyretic/pyretic/modules/firewall-policies.cfg
+cp pyretic_switch.py ~/pyretic/pyretic/modules
 cp firewall.py ~/pyretic/pyretic/modules
-cp firewall-policy.py ~/pyretic/pyretic/modules
+cp firewall_policy.py ~/pyretic/pyretic/modules
 pushd ~/pyretic
 python pyretic.py -m p0 pyretic.modules.firewall
 popd
