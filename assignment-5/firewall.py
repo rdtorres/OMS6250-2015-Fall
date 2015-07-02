@@ -27,13 +27,13 @@ def main():
     config = parse_config(policy_file)
     
     # Get learning switch module
-    learningSwitch = ActLikeSwitch
+    learningSwitch = ActLikeSwitch()
     
     # Make Firewall policy
     fwPolicy = make_firewall_policy(config)
     
     # Return composed policy
-    return self.fwPolicy >> learningSwitch
+    return fwPolicy >> learningSwitch
 
 
 
