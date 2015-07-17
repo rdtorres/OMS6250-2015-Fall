@@ -5,7 +5,6 @@
 from pyretic.lib.corelib import *
 from pyretic.lib.std import *
 from pyretic.lib.query import packets
-from ryu.lib.packet.dns import dns
 from pyretic.modules.dns_firewall import *
 
 class Firewall(DynamicPolicy):

@@ -2,7 +2,7 @@
 
 "Assignment 6 - Student functionality."
 
-from ryu.lib.packet.dns import dns
+from ryu.lib.packet import *
 
 
 
@@ -16,11 +16,16 @@ DNS_OFFSET = 42
 # to satisfy the requirements of the assignment. 
 def dns_firewall(pkt):
     # Adjust for the offset of the beginning of DNS data in the packet.
+    print pkt
     packet = pkt['raw'][DNS_OFFSET]
     
     # This is defined in pyretic/pyretic/vendor/ryu/ryu/lib/packet/dns.py,
     # also in assignment-6/ryu_update/dns.py
-    dns_parsed = dns.parser(packet)
+    try:
+        dns_parsed = dns.dns.parser(packet)
+    except Exception as e:
+        print e
+        raise e
 
 
     # The next three items you will probably need to use to properly implement
