@@ -1,0 +1,44 @@
+$TTL	86400 ; 24 hours could have been written as 24h or 1d
+; $TTL used for all RRs without explicit TTL value
+$ORIGIN cs6250.com.
+@  1D  IN  SOA ns1.cs6250.com. hostmaster.cs6250.com. (
+			      2002022401 ; serial
+			      3H ; refresh
+			      15 ; retry
+			      1w ; expire
+			      3h ; minimum
+			     )
+       IN  NS     ns1.cs6250.com. ; in the domain
+       IN  NS     ns2.cs6250.com. ; in the domain
+       IN  NS     ns3.cs6250.com. ; in the domain
+       IN  NS     ns4.cs6250.com. ; in the domain
+       IN  NS     ns5.cs6250.com. ; in the domain
+       IN  NS     ns6.cs6250.com. ; in the domain
+       IN  NS     ns7.cs6250.com. ; in the domain
+       IN  NS     ns8.cs6250.com. ; in the domain
+       IN  NS     ns9.cs6250.com. ; in the domain
+       IN  MX  10 mail.cs6250.com. ; external mail provider
+; server host definitions
+ns1    IN  A      10.0.0.1  ;name server definition     
+ns2    IN  A      10.0.0.100
+ns3    IN  A      10.0.0.101
+ns4    IN  A      10.0.0.102
+ns5    IN  A      10.0.0.103
+ns6    IN  A      10.0.0.104
+ns7    IN  A      10.0.0.105
+ns8    IN  A      10.0.0.106
+ns9    IN  A      10.0.0.107
+www    IN  A      10.0.0.5  ;web server definition
+www    IN  A      10.0.0.6  ;web server definition
+www    IN  A      10.0.0.7  ;web server definition
+www    IN  A      10.0.0.8  ;web server definition
+www    IN  A      10.0.0.9  ;web server definition
+www    IN  A      10.0.0.10  ;web server definition
+www    IN  A      10.0.0.11  ;web server definition
+www    IN  A      10.0.0.12  ;web server definition
+www    IN  A      10.0.0.13  ;web server definition
+www    IN  A      10.0.0.14  ;web server definition
+www    IN  A      10.0.0.15  ;web server definition
+www    IN  A      10.0.0.16  ;web server definition
+ftp    IN  CNAME  www.cs6250.com.  ;ftp server definition
+mail   IN  A      10.0.0.99
