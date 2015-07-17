@@ -5,7 +5,10 @@
 #    exit
 #fi
 
+cp dns_amplification_prevention.py ~/pyretic/pyretic/modules
 cp pyretic_switch.py ~/pyretic/pyretic/modules
+cp firewall.py ~/pyretic/pyretic/modules
+cp dns_firewall.py ~/pyretic/pyretic/modules
 pushd ~/pyretic
-python pyretic.py -m p0 pyretic.modules.pyretic_switch
+python pyretic.py -m p0 pyretic.modules.dns_amplification_prevention
 popd
