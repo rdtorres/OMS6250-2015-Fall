@@ -58,8 +58,9 @@ class Firewall(DynamicPolicy):
     # This sends packets. You need to provide where it's being sent from. 
     # For our case, switch should always equal 1.
     def send_packet(self, switch, port, pkt):
-        pkt.modify(switch = switch)
-        pkt.modify(inport = -1)
-        pkt.modify(outport = port)
+        rp = pkt
+        rp = rp.modify(switch = switch)
+        rp = rp.modify(inport = -1)
+        rp = rp.modify(outport = port)
 
-        self.network.inject_packet(pkt)
+        self.network.inject_packet(rp)
