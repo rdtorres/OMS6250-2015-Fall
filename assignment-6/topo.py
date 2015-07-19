@@ -23,14 +23,14 @@ class FWTopo(Topo):
      |    |    |
     h1    h2   dns
     '''
-    def __init__(self, cpu=.1, bw=10, delay=None, **params):
+    def __init__(self, cpu=.1, bw=2.0, delay=None, **params):
         super(FWTopo,self).__init__()
         
         # Host in link configuration
         hconfig = {'cpu': cpu}
         fat_lconfig = {'bw': bw, 'delay': delay}
-        med_lconfig = {'bw': bw/2, 'delay': delay}
-        skinny_lconfig = {'bw': bw/10, 'delay': delay}
+        med_lconfig = {'bw': bw/2.0, 'delay': delay}
+        skinny_lconfig = {'bw': bw/6.0, 'delay': delay}
         
         # Create the firewall switch
         s1 = self.addSwitch('s1')
@@ -43,7 +43,7 @@ class FWTopo(Topo):
         svr = self.addHost('svr', **hconfig)
         self.addLink(s1, svr, port1=2, port2=1, **med_lconfig)
         self.addLink(s1, s2, port1=1, port2=1, **fat_lconfig)
-        self.addLink(s2, dns, port1=3, port2=1, **fat_lconfig)
+        self.addLink(s2, dns, port1=3, port2=1, **med_lconfig)
         self.addLink(s2, h1, port1=4, port2=1, **skinny_lconfig)
         self.addLink(s2, h2, port1=5, port2=1, **skinny_lconfig)
 
