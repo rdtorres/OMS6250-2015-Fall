@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-"Networking Assignment 2"
+"Networking Assignment 1"
 
 from mininet.topo import Topo
 from mininet.net import Mininet
