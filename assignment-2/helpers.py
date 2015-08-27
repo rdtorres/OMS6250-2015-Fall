@@ -4,15 +4,17 @@
 
 import re
 
-logfile = None
+logfilename = None
 
-def open_log(filename):
-    global logfile
-    logfile = open(filename, "w")
+def init_log(filename):
+    global logfilename
+    logfilename = filename
+    logfile = open(logfilename, "w")
+    logfile.close()
     
-
 def write_forwarding_entry(switchnum, switchport, macaddr):
-    global logfile
+    global logfilename
+    logfile = open(logfilename, "a")
     # Prints out a forwarding entry to the log file
 
     # Lots of type checking beforehand.
@@ -29,15 +31,14 @@ def write_forwarding_entry(switchnum, switchport, macaddr):
     logfile.write(str(switchnum) + " " + str(switchport) + " " + macaddr.lower() + "\n")
     print str(switchnum) + " " + str(switchport) + " " + macaddr.lower()
 
-def next_entry():
-    global logfile
-    logfile.write("\n")
-    print ""
-
-def finish_log():
-    global logfile
     logfile.close()
 
+def next_entry():
+    global logfilename
+    logfile = open(logfilename, "a")
+    logfile.write("\n")
+    print ""
+    logfile.close()
 
 
 

@@ -28,6 +28,23 @@ class StaticSwitch(Policy):
         # a suggestion, using a list of tuples will work.
         
 
+
+        # Initialize logfile
+        init_log("static-forwarding.log")        
+
+        # TODO (below): Write out the forwarding tables. This is different than 
+        # what you will need to do in learning-switch.py: you need only do this
+        # once. You need to write out the forwarding table entries one-by-one,
+        # then close out the file. The file is initialized and closed already
+        # for you, you simply need to loop through the forwarding table you 
+        # created above.
+        #
+        # Loop through table entries using write_forwarding_table() from
+        # helpers.py
+
+
+        
+
     def build_policy(self):
         """ 
         This creates the pyretic policy. You'll need to base this on how you 

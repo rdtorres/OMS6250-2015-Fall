@@ -20,6 +20,9 @@ class LearningSwitch(DynamicPolicy):
         # Initialize the parent class
         super(LearningSwitch, self).__init__()
 
+        # Initialize logfile
+        init_log("learning-switch.log")
+        
         # TODO: Initialize your forwarding tables. Create this however you wish.
         # Couple of suggestions: Dictionary of dictionaries, Dictionary of 
         # tuples. 
@@ -40,11 +43,18 @@ class LearningSwitch(DynamicPolicy):
 
 
     def print_switch_tables(self):
-        # TODO - You will need to implement this based on how your forwarding
-        # table are set up. Us the functions in the first half of helpers.
-        # Format should be to call write_forwarding_entry() for each entry in
-        # the forwarding table, then finish up with finish_printing(). 
-        pass
+        # TODO - This is different than how logging in static-switch.py works.
+        # Here, you have to do a bit more. First, you need to print out each 
+        # entry in the forwarding tables, as was done in static-switch.py.
+        # Finally (which is already done for you), next_entry() needs to be
+        # called, creating a break between each set of forwarding tables.
+        # next_entry() need only be called at the very end - not after each
+        # entry.
+        
+        
+        # After looping through the forwarding table(s), finish up with a break
+        # in the log file.
+        next_entry()
 
     def learn_route(self, pkt):
         """  This function adds new routes into the fowarding table. """
