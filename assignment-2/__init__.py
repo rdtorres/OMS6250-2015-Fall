@@ -1,1 +1,1 @@
-"CS244 Assignment #1: Parking Lot"
+"CS 6250 Assignment 2"

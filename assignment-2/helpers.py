@@ -33,7 +33,7 @@ def write_forwarding_entry(switchnum, switchport, macaddr):
 
     logfile.close()
 
-def next_entry():
+def end_fwd_table():
     global logfilename
     logfile = open(logfilename, "a")
     logfile.write("\n")

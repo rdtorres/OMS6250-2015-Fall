@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-"Assignment 4 - Creates the topology used for the learning switch \
+"Assignment 2 - Creates the topology used for the learning switch \
     assignment. This file needs no changes in order to complete the \
     assignment, however the student may want to change it to test new \
     topologies."
@@ -14,7 +14,6 @@ from mininet.cli  import CLI
 
 
 class LSTopo(Topo):
-
     def __init__(self, cpu=.1, bw=10, delay=None, **params):
         """ Creates the topology described in assignment 4
             with 5 switches and 7 hosts.
@@ -60,12 +59,14 @@ class LSTopo(Topo):
         self.addLink(sE, h6, port1=2, port2=0, **lconfig)
         self.addLink(sE, h7, port1=3, port2=0, **lconfig)
 
+
 def main():
     print "Starting topology"
     topo = LSTopo()
     net = Mininet(topo=topo, link=TCLink, controller=RemoteController, autoSetMacs=True)
     net.start()
     CLI(net)
+
 
 if __name__ == '__main__':
     main()

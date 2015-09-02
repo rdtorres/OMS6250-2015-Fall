@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-"Assignment 4 - This is the controller code that students will have to \
+"Assignment 2 - This is the controller code that students will have to \
     implement sections of. It is Pyretic based, but this is somewhat\
     unimportant at the moment, as we only care about the learning\
     behaviors."
@@ -21,14 +21,24 @@ class LearningSwitch(DynamicPolicy):
         super(LearningSwitch, self).__init__()
 
         # Initialize logfile
-        init_log("learning-switch.log")
+        init_log("learning-switch.log") # Do NOT edit this line
         
         # TODO: Initialize your forwarding tables. Create this however you wish.
         # Couple of suggestions: Dictionary of dictionaries, Dictionary of 
         # tuples. 
 
+        # NOTE: (Python tip) if you create a variable like this...
+        #    foo = 42
+        # that will be a local variable, only accessible in this function.
+        #
+        # But if you create a variable like this...
+        #    self.foo = 42
+        # that will be a class member that is accessible from other class
+        # methods (functions), such as build_policy(), but remember to use
+        # "self" *every* time you access it, or you'll access a local variable
+        # instead of the class member!
 
-        # only use one flood instance - this is the default policy when there 
+        # Only use one flood instance - this is the default policy when there 
         # isn't a known path.
         self.flood = flood()
 
@@ -46,31 +56,27 @@ class LearningSwitch(DynamicPolicy):
         # TODO - This is different than how logging in static-switch.py works.
         # Here, you have to do a bit more. First, you need to print out each 
         # entry in the forwarding tables, as was done in static-switch.py.
-        # Finally (which is already done for you), next_entry() needs to be
+        # Finally (which is already done for you), end_fwd_table() needs to be
         # called, creating a break between each set of forwarding tables.
-        # next_entry() need only be called at the very end - not after each
+        # end_fwd_table() need only be called at the very end - not after each
         # entry.
-        
-        
+
         # After looping through the forwarding table(s), finish up with a break
         # in the log file.
-        next_entry()
+        end_fwd_table() # Do NOT edit this line
+
 
     def learn_route(self, pkt):
         """  This function adds new routes into the fowarding table. """
 
-        # TODO - create a new entry in the fowarding table. Use the functions 
+        # TODO - Create a new entry in the fowarding table. Use the functions 
         # in the second half of helpers to simplify all your work.
-        
 
-        # print out the switch tables:
+        # Print out the switch tables:
         self.print_switch_tables()
 
         # Call build_policy to update the fowarding tables of the switches.
         self.build_policy()
-        pass
-
-
 
 
     def build_policy(self):
@@ -82,7 +88,6 @@ class LearningSwitch(DynamicPolicy):
         new_policy = None
         not_flood_pkts = None
         
-
         # TODO: Example code. You will need to edit this based on how you're 
         # storing your policies. You should only have to replace the details in
         # rule entries.
@@ -100,19 +105,18 @@ class LearningSwitch(DynamicPolicy):
                 not_flood_pkts = (match(switch=int(rule[0]), dstmac=(rule[1])))
             else:
                 not_flood_pkts |= (match(switch=int(rule[0]), dstmac=(rule[1])))
-                        
-                
 
         # If you follow the pattern above, you won't have to change this below. 
-        # We don't know of any rules yet, so flood everything.
         if not_flood_pkts == None:
+            # We don't know of any rules yet, so flood everything.
             self.policy = self.flood + self.query
         else:
             self.policy = if_(not_flood_pkts, new_policy, self.flood) + self.query
         
         # The following line can be uncommented to see your policy being
-        # built up, say during a flood period. 
-        # print self.policy
+        # built up, say during a flood period. (Leave it commented out or
+        # re-comment it before you submit this file, though.)
+        #print self.policy
 
 
 def main():
