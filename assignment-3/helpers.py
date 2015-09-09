@@ -2,23 +2,29 @@
 
 "Helpers for Assignment 3."
 logfile = None
+current_logs = {}
+ALPHABETIZE = TRUE
 
 def open_log(filename):
     global logfile
     logfile = open(filename, "w")
     
 
-def write_entry(logstring):
-    global logfile
-    # Prints out an entry to the log file
-   
-    logfile.write(logstring + "\n")
-    print logstring
+def add_entry(switch, logstring):
+    global current_logs
+    current_logs[switch] = logstring
+    print switch + ":" + logfile
 
-def next_entry():
+def finish_round():
     global logfile
-    logfile.write("-----\n")
-    print "-----"
+    global current_logs
+    global ALPHEBETIZE
+    
+    indices = current_logs.keys()
+    if ALPHABETIZE:
+        indices = sorted(indices)
+    for index in indices:
+        logfile.wirte(switch + ":" + logstring + "\n")
 
 def finish_log():
     global logfile

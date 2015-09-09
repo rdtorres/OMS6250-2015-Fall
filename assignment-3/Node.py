@@ -89,9 +89,12 @@ class Node(object):
         Taken from topo1.py
         '''
         # TODO: The string in the format above (no newlines, no whitepsace) must
-        # be defined. THen log with write_entry, example below.
-        logstring = "A:A0,B1,C2"
-        write_entry(logstring)
+        # be defined. THen log with write_entry, example below. You'll need to 
+        # make a loop over all the switches and call add_entry() (see helpers.py)
+        # for each switch.
+        switch = "A"
+        logstring = "A0,B1,C2"
+        add_entry(switch, logstring)
         pass
 
 
@@ -160,8 +163,11 @@ class Topology(object):
                 node.log_distances()
             
 
-            # Log a break.
-            next_entry()
+            # Done with a round. Now, we call finish_round() which writes out
+            # each entry in log_distances(). By default, this will will print 
+            # out alphabetical order, which you can turn off so the logfile 
+            # matches what is printed during log_distances().
+            finish_round()
 
             done = True
             for node in self.nodes:
