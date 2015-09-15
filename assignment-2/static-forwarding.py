@@ -47,7 +47,7 @@ class StaticSwitch(Policy):
         # for you, you simply need to loop through the forwarding table you 
         # created above.
         #
-        # Loop through table entries using write_forwarding_table() from
+        # Loop through table entries using write_forwarding_entry() from
         # helpers.py
 
 
