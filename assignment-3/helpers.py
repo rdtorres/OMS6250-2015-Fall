@@ -8,6 +8,7 @@
 "Helpers for Assignment 3."
 logfile = None
 current_logs = None
+ROUND_SEP = "-----\n"
 ALPHABETIZE = True
 
 
@@ -36,7 +37,7 @@ def finish_round():
     for index in indices:
         logfile.write(index + ":" + current_logs[index] + "\n")
 
-    logfile.write("\n")
+    logfile.write(ROUND_SEP)
     current_logs = dict()
 
 
