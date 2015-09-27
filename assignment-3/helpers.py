@@ -3,7 +3,7 @@
 "Helpers for Assignment 3."
 logfile = None
 current_logs = {}
-ALPHABETIZE = TRUE
+ALPHABETIZE = True
 
 def open_log(filename):
     global logfile
@@ -13,7 +13,7 @@ def open_log(filename):
 def add_entry(switch, logstring):
     global current_logs
     current_logs[switch] = logstring
-    print switch + ":" + logfile
+    print switch + ":" + logstring
 
 def finish_round():
     global logfile
@@ -24,7 +24,7 @@ def finish_round():
     if ALPHABETIZE:
         indices = sorted(indices)
     for index in indices:
-        logfile.wirte(switch + ":" + logstring + "\n")
+        logfile.write(index + ":" + current_logs[index] + "\n")
 
 def finish_log():
     global logfile
