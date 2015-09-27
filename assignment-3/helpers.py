@@ -1,4 +1,9 @@
-#!/usr/bin/python
+# Assignment 3 for OMS6250
+#
+# Helper functions for the DistanceVector project. Students should not
+# modify this file.
+#
+# Copyright 2015 Sean Donovan
 
 "Helpers for Assignment 3."
 logfile = None
