@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 # Assignment 3 for OMS6250
 #
 # This how you run the topology and have it execute the Bellman-Ford algorithm.
@@ -7,10 +9,13 @@
 #     python run_topo.py topo1 topo1.log
 # Note how the topology file doesn't have the .py extension.
 #
+# Students should not modify this file.
+#
 # Copyright 2015 Sean Donovan
 
 
 import sys
+from Topology import *
 from Node import *
 from helpers import *
 
