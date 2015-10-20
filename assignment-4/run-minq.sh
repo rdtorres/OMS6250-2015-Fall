@@ -8,6 +8,7 @@ python bufferbloat.py --bw-host 1000 \
                 --nflows 1 \
                 --maxq 20 \
                 -n 2 \
+                --cong reno \
 
 echo "cleaning up..."
 killall -9 iperf ping
