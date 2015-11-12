@@ -18,6 +18,7 @@ if not (len(sys.argv) == 3):
 
 # Create a TCP/IP socket
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+sock.settimeout(2.0)
 
 # Connect the socket to the port where the server is listening
 server_address = (sys.argv[1], int(sys.argv[2]))
